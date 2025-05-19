@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress</title>
+    <link rel="stylesheet" href="./weeklies.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  </head>
+  <body>
+    <div class="backBtn">
+      <a href="./index.html">Back</a>
+    </div>
+    <div class="container">
+      <h1>Workbook Progress</h1>
+
+      <h2>Theme</h2>
+      <p>
+        I wanted to incorporate the same animal / farm theme I had going since
+        workbook one, and use 3D elements like I did with workbook two. The
+        design will be vibrant, cozy and familiar.
+      </p>
+
+      <h2>Reflection from workbook two</h2>
+      <p>
+        My experience with 3D using p5 for workbook two could have been a lot
+        better if I was more prepared.
+      </p>
+      <ul>
+        <li>
+          Firstly I did not factor in enough time as I didn't realise
+          incorporating 3D would take sigificantly longer time
+        </li>
+        <li>
+          There wasn't a tutorial online or code snippet for the idea I had in
+          mind
+        </li>
+        <li>
+          I didn't have enough time to experiment much before the deadline
+        </li>
+        <li>
+          There wasn't enough documentation on debugging, which was my biggest
+          problem
+        </li>
+        <li>AI was not helpful</li>
+      </ul>
+
+      <h2>Goals for workbook three</h2>
+      <p>
+        I wanted to try make an interactive 3D workbook using Three.js and
+        reduce my reliance on AI. The goal is to create a scene where the viewer
+        can navigate around a scene with iconic tributes to key moments from
+        this subject. <br /><br />
+        I followed this tutorial by JS Mastery which taught me a few things:
+      </p>
+      <ul>
+        <li>
+          Three.js is like a library for WebGL. We can write code for 3D models
+          with much fewer lines of code and complication.
+        </li>
+        <li>
+          Three.js is reccomended to use with React because we can use renderers
+          to help us (React Three Fiber and React Three Drei)
+        </li>
+      </ul>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/FkowOdMjvYo?si=T9USVFi5xolwtSwU"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+      <p>
+        However...I ran into so many problems that I couldn't understand or
+        solve. I couldn't even get my model to show up in the scene. At this
+        point I felt like I was learning 3 new applications at once, and it was
+        <strong>not</strong> going well. This was when I knew I needed to pivot.
+      </p>
+      <img src="./IMG/errors.png" alt="" />
+
+      <h2>Restarting</h2>
+      <p>
+        Now that I had a rough overview of Three.js, I wanted to use it as an
+        add on to skills I've already learnt. This was when I found Andrew
+        Woan's creative development coding course. Andrew Woan teaches us the
+        fundamental basics of incorporating 3D into vanilla Javascript using
+        Three.js, as well as referencing documentation as we go. This was very
+        similar to Matilda and Mei's teaching methods in class where they taught
+        us to read the p5 documentation together with the live coding session.
+      </p>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/X3pPAdQBKHo?si=8md--mKVxmyZ4K9_"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+      <h2>Process</h2>
+
+      <div class="flexSection">
+
+        <div class="processContainer">
+          <figure>
+            <img src="./IMG/first cube.png" alt="" width="500" />
+            <figcaption>Making a 3D cube in Three.js</figcaption>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/low poly scene.png" alt="" width="500" />
+            <figcaption>Modelling a low poly scene</figcaption>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/1.jpg" alt="" width="500" />
+            <figcaption>Starting to model in Blender</figcaption>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/2.jpg" alt="" width="500" />
+            <figcaption>Setting playing area</figcaption>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/3.jpg" alt="" width="500" />
+            <figcaption>
+              Modelling key interactable objects inspired by moments in this
+              subject
+            </figcaption>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/4.jpg" alt="" width="500" />
+            <figcaption>Mapping out journey path</figcaption>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/5.jpg" alt="" width="500" />
+            <figcaption>Finished scene</figcaption>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/6.jpg" alt="" width="500" />
+            <figcaption>Setting Collision boundaries</figcaption>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/7.jpg" alt="" width="500" />
+            <figcaption>Collision barriers</figcaption>
+          </figure>
+  
+  
+          <figure>
+            <img src="./IMG/8.png" alt="" width="500" />
+            <figcaption>
+              Running into problems: Orthographic camera created blind spots
+              <br />
+              <i
+                >You couldn't see the sheep when it went behind the Kusama
+                inspired figure. Week 9 and the Arduino model was blocked as well.
+                Some words were angled towards a different direction</i
+              >
+            </figcaption>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/9.jpg" alt="" width="500" />
+            <figcaption>
+              Tweaking model and collision barrier in Blender
+            </figcaption>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/10.jpg" alt="" width="500" />
+            <figcaption>
+              Final layout:<i
+                >Angles adjusted based on orthographic camera views, models either
+                resized or remodelled.</i
+              >
+            </figcaption>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/11.png" alt="" width="500" />
+            <figcaption>
+              Back to Three.js and finding another problem: The land is not wide
+              enough, canvas background showing.
+            </figcaption>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/12.png" alt="" width="500" />
+            <figcaption>
+              Changed canvas background colour to make it look like model is
+              continuous by implementing this code
+            </figcaption>
+            <pre>
+              <code>
+                scene.background = new THREE.Color(0xaed35f);
+              </code>
+            </pre>
+          </figure>
+  
+          <figure>
+            <img src="./IMG/13.png" alt="" width="500" />
+            <figcaption>
+              Problems that I could not solve:
+              <i
+                >The exit button does not work if an interactive object is behind
+                the button when clicked. The only way to get out is to click on
+                the same/or another interactive object</i
+              >
+              <p>
+                These are the few problems that I felt was beyond the scope of
+                what I can handle for this submission, so i'll be looking at
+                debugging this in the future instead.
+              </p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This is week 8</title>
+    <link rel="stylesheet" href="./weeklies.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="backBtn">
+      <a href="./index.html">Back</a>
+    </div>
+    <div class="container">
+      <h1>Week 8</h1>
+      <p>
+        Over the week I had a look at some of the parts of a Arduino kit I
+        wasn't clear about, heres what I learnt: <br /><br />
+      </p>
+
+      <h3>Breadboard</h3>
+      <p>
+        The big white board with many holes is called the Breadboard The
+        Breadboard allows you to connect and test electionic parts without
+        soldering (which I had to google: it means to permanently connect
+        eletronic parts together with melted metal so electricity can flow
+        between them) We can simply plug in wires and components to build
+        circuits using the Breadboard.
+      </p>
+
+      <h3>Resistors</h3>
+      <p>
+        Resistors are the small metal wire looking things with coloured stripes.
+        Resistors slows down the flow of electricity and its important to
+        prevent other parts from getting too much power and burning out. The
+        combination colour of the stripes is an indication of its resistance
+        power and it varies between brands. What I found troublesome about the
+        resistors were sorting them out after using it as it doesnt quite fit
+        back into the paper sleeve it came in and its time consuming to cross
+        check every combination. But nothing in life is perfect!
+      </p>
+
+      <h3>Ground</h3>
+      <p>
+        The ground is labled as GND and acts like the home base where
+        electricity starts and end within a circuit. The reason we need it is
+        because electricty needs a complete loop to flow. The flow of
+        electricity would go from the power source, thorugh the componenets and
+        then back to ground. When we're connecting an LED or sensor, the
+        positive side gets connected to the power pin and negative side to the
+        GND.
+      </p>
+
+      <h2>Potatos makes music too</h2>
+      <p>
+        This workshop session had us exploring capacitive touch music machines.
+        When I think of music, I think of a piano, a guitar or a violin. With
+        technology in place, people can now get digital smaller pianos to make
+        music. Walking by the class next to ours in Southbank, I often see a
+        room full of students using a small digital piano hooked up to a
+        computer and headphones. A class of 20 students can play music at the
+        same time without disrupting eachother. This capacitive touch device
+        must be the V1.0.0.0 of a digital instrument. <br /><br />
+        To make this capacitive touch music machine, we followed the Tinkercad
+        diagram and set up our boards.
+      </p>
+      <img src="./IMG/capacitive touch.png" alt="" />
+      <img
+        src="./IMG/ardiuno music set up.JPG"
+        alt=""
+        class="rotateResizeImg"
+      />
+      <p>
+        Next we added this code Arduino IDE and connected that to the set up
+      </p>
+      <div class="codeSnippet">
+        <pre><code>
+              // Setup pins
+              #define PIEZO_PIN 9
+              #define LED_PIN 4
+              #define csSamples 5
+              
+              // Create CapacitiveSensor objects
+              CapacitiveSensor cs_2_3 = CapacitiveSensor(2, 3); // Wire 1
+              CapacitiveSensor cs_2_5 = CapacitiveSensor(2, 5); // Wire 2
+              CapacitiveSensor cs_2_6 = CapacitiveSensor(2, 6); // Wire 3 (NEW)
+              
+              bool lampState = false;  // (optional LED stuff)
+              
+              int sen1Val, sen2Val, sen3Val = 0;
+              
+              void setup() {
+                Serial.begin(9600);
+                
+                pinMode(PIEZO_PIN, OUTPUT);
+                pinMode(LED_PIN, OUTPUT);
+                
+                Serial.println("Setup complete. Ready for touch!");
+              }
+              
+              void loop() {
+                // Read sensor values
+                sen1Val = cs_2_3.capacitiveSensor(csSamples);
+                sen2Val = cs_2_5.capacitiveSensor(csSamples);
+                sen3Val = cs_2_6.capacitiveSensor(csSamples);
+              
+                // Debugging: print all sensor values
+                Serial.print("Sen1: "); Serial.print(sen1Val);
+                Serial.print(" | Sen2: "); Serial.print(sen2Val);
+                Serial.print(" | Sen3: "); Serial.println(sen3Val);
+              
+                // Tone logic based on touch
+                if (sen1Val > 50) {  // Adjust threshold as needed
+                  tone(PIEZO_PIN, 262, 200); // C4 (Middle C) - 262 Hz
+                  Serial.println("Wire 1 touched - C4");
+                }
+                else if (sen2Val > 50) {
+                  tone(PIEZO_PIN, 294, 200); // D4 - 294 Hz
+                  Serial.println("Wire 2 touched - D4");
+                }
+                else if (sen3Val > 50) {
+                  tone(PIEZO_PIN, 330, 200); // E4 - 330 Hz
+                  Serial.println("Wire 3 touched - E4");
+                }
+                else {
+                  noTone(PIEZO_PIN); // No touch = no sound
+                }
+              
+                delay(100); 
+              }
+        </code></pre>
+      </div>
+      <p>
+        And the result was different sounds emitting when you pressed on the
+        wires!
+      </p>
+      <div class="video">
+        <video
+          src="./IMG/arduino music.MOV"
+          class="vid rotateResizeImg"
+        ></video>
+        <div class="videoBtn">
+          <button class="vidBtn">Play</button>
+        </div>
+      </div>
+
+      <p>
+        Next we poke the wires through different objects. Our neighbours used
+        leafs, grapes, carrots. We picked potatos. The result was so cool: we
+        could play music by pressing onto the potatos! We even tried to play
+        familiar tunes but there wasnt enough notes for it, still fun though!
+      </p>
+
+      <img
+        src="./IMG/arduino potato setup.JPG"
+        alt=""
+        class="rotateResizeImg"
+      />
+      <div class="video">
+        <video
+          src="./IMG/arduino potato.MOV"
+          id="arduinoPotato"
+          class="vid rotateResizeImg"
+        ></video>
+        <div class="videoBtn">
+          <button class="vidBtn">Play</button>
+        </div>
+      </div>
+
+      <p>
+        This potato set up reminds me of potato batteries. I was too young to
+        understand the science behind it then, (not that I understand the
+        science behind it now either) but I see how potatos are great conductors
+        of electricity.
+      </p>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/SOsE5ECH_IM?si=oe5AAO-J8kbZGzJc"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+
+      <h2>Chindogu</h2>
+      <p>
+        Chindōgu (珍道具) refers to the Japanese art of inventing ingenious but
+        ultimately impractical or useless everyday gadgets. These inventions are
+        often humorous and serve as a form of art, rather than practical
+        solutions to problems. They represent freedom of thought and action,
+        challenging the idea that everything must have an economic value.
+        <br /><br />
+        I went down a spiral scrolling through endless Chindōgu designs.
+        <br /><br />
+        Heres my take on Chindōgu
+      </p>
+
+      <h3>Anti Right Handed Device</h3>
+      <p>
+        As a leftie, we all know the struggles of living in a right handed
+        world. What if I could create something that inconvenience right
+        handers. My Anti Right Handed Device attaches itself to a pencil, with
+        an eraser on the other hand. As a right hander writes, the eraser erases
+        whatever they wrote, deeming their words useless.
+      </p>
+      <img src="./IMG/anti right device.jpg" alt="" width="720" height="540" />
+
+      <h3>Pro Left Handed Device</h3>
+      <p>
+        On the other hand, what if I could flip this device around, making it a
+        device <i>specifically made for</i> left handers. The Pro Left Handed
+        Device erases everything written in their way, allowing their words to
+        fill the space instead.
+      </p>
+      <img src="./IMG/pro left device.jpg" alt="" width="720" height="540" />
+
+      <h3>Anti Fog Glasses</h3>
+      <p>
+        Usually when eating noodles or sipping something hot, I would take off
+        my glasses because of the steam fogging my glasses. This made me think
+        what if I could attach a windshield wiper to my glasses so I can still
+        keep them on as I eat. It could be quite practical but such a silly
+        thing to look at. But who knows? We could be all counting on Zendaya to
+        make this a trend.
+      </p>
+      <img src="./IMG/anti fog glasses.jpg" alt="" width="720" height="540" />
+    </div>
+    <script src="./weeklies.js"></script>
+  </body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This is week 9</title>
+    <link rel="stylesheet" href="./weeklies.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="backBtn">
+      <a href="./index.html">Back</a>
+    </div>
+    <div class="container">
+      <h1>Week 9</h1>
+      <p>
+        This week we learnt how to connect our Arduino setup with P5js, super
+        useful for the final project
+      </p>
+      <h2>Arduino and P5</h2>
+      <p>code for p5</p>
+      <pre><code>
+            let msg;
+    let serialOptions = { baudRate: 9600 };
+    let serial;
+    let isConnected = false;
+    let dataIn = 0;
+    let textY = 40;
+    
+    function setup() {
+      createCanvas(500,500);
+      background(100);
+      textFont('Courier New');
+      textSize(20);
+      // Setup Web Serial using serial.js
+      // remember to include the library in index.html:   <script src="https://cdn.jsdelivr.net/gh/makeabilitylab/p5js/_libraries/serial.js"></script>
+      serial = new Serial();
+      serial.on(SerialEvents.CONNECTION_OPENED, onSerialConnectionOpened);
+      serial.on(SerialEvents.CONNECTION_CLOSED, onSerialConnectionClosed);
+      serial.on(SerialEvents.DATA_RECEIVED, onSerialDataReceived);
+      serial.on(SerialEvents.ERROR_OCCURRED, onSerialErrorOccurred);
+      msg = "Not connected";
+      
+    }
+    
+    function draw() {
+      //background(255);
+      fill(0,255,0);
+      text(msg,40,textY);
+      
+      if (dataIn < 100) {
+        background(0, 255, 0);
+      }
+       else if (dataIn < 200 ) {
+        background(255, 0, 0);
+      }
+       else {
+        background(0, 0, 255); 
+       }
+      dataMapped = map(dataIn, 0, 255, 0, width);
+      fill(0, 100);
+      rect(0, 0, dataMapped, height);
+      
+    }
+    
+    function mouseMoved() {
+      let mapedX = map(mouseX,0,width,0,255);
+      mapedX = floor(mapedX);
+      let mapedY = map(mouseY,0,height,0,255);
+      mapedY = floor(mapedY);
+      serialWriteArrayData([mapedX, mapedY]);
+    }
+    
+    function mouseClicked() {
+      if (!isConnected) {
+        isConnected = connectPort(); 
+      }
+    }
+    
+    async function connectPort() {
+      if (!serial.isOpen()) {
+        await serial.connectAndOpen(null, serialOptions);
+      } else {
+        serial.autoConnectAndOpenPreviouslyApprovedPort(serialOptions);
+        return true;
+      }
+    }
+    
+     function onSerialErrorOccurred(eventSender, error) {
+      console.log("onSerialErrorOccurred", error);
+      msg = "Serial Error Occurred!";
+    }
+    
+    function onSerialConnectionOpened(eventSender) {
+      console.log("Serial connection opened successfully");
+      msg = "🌈 connected!";
+    }
+    
+    function onSerialConnectionClosed(eventSender) {
+      console.log("onSerialConnectionClosed");
+      msg = "Connection Closed!";
+    }
+    
+    function onSerialDataReceived(eventSender, newData) {
+      console.log("onSerialDataReceived", newData);
+      msg = "Received: " + newData;
+      dataIn = int(newData); // safely update dataIn
+    }
+     
+    async function serialWriteArrayData(data) {
+      if (serial.isOpen()) {
+        let dataFormated = "";
+        for(i=0;i<data.length;i++) {
+          dataFormated +=data[i];
+          dataFormated += ",";
+        }
+        console.log("send data: "+dataFormated)
+            serial.writeLine(dataFormated);
+      }
+    }
+        </code></pre>
+
+      <div class="video">
+        <video
+          src="./IMG/ardiuno potential meter.MOV"
+          id="arduinoPotential"
+          class="vid rotateResizeImg"
+        ></video>
+        <div class="videoBtn">
+          <button class="vidBtn">Play</button>
+        </div>
+      </div>
+
+      <div class="flexSection">
+
+        <p>
+          Instead of working as a pair or group like other weeks, this was an
+          individual activity. I realised there were still many things I wasn't
+          sure about. This device might be small but there sure were a lot of
+          parts to it. I realised the difficulty of physical computing was not
+          only having to debug the code, but also making sure the physical setup
+          was done right.
+          <br /><br />
+          When my setup was not working, I didn't know if it was because my code
+          was wrong, I downloaded the wrong library, my wires were connected in
+          the wrong holes, my kit wasn't working, my laptop doesn't want to be
+          productive, or that I was just having a bad day. This makes me admire
+          physical computing projects even more, knowing they probably face this a
+          1000 more times while working on their prototypes.
+        </p>
+  
+        <h2>Ideating final project ideas</h2>
+        <p>
+          Through the past 8 weeks of Interactive media I realised that I am
+          interested in creative coding, so I wanted to do a final project
+          centered around that. Here are some of my ideas:
+        </p>
+  
+        <h3>Audio controlled game</h3>
+        <img
+          src="./IMG/audio controlled game.jpg"
+          alt=""
+          width="720"
+          height="540"
+        />
+        <p>
+          The idea behind this is a game that uses voice control to move a
+          character through the maze. I wanted to utilise the voice to text
+          function in P5js. The player has to say "left" or "right", and when the
+          program senses these word, it makes the character move. <br /><br />
+          However after the in class consultation, I realise I have some
+          reservations about using this as my final project as I was merely
+          interested in further developing voice to text, but not quite as engaged
+          with developing the game itself. I will consider keeping the audio
+          technology, but refine the concept.
+        </p>
+  
+        <h3>Escape Room</h3>
+        <img src="./IMG/escape room.jpg" alt="" width="720" height="540" />
+        <p>
+          To me personally, interactive media is exciting when it evokes some
+          emotion in me. Escape rooms comes to mind when I think of immersive
+          experience. I wanted to recreate that into a digital form, possibily by
+          creating a 3D scene filled with planes filled with riddles and puzzles.
+          To evoke a sense of thrill, I thought of using a creepy game host that
+          lurks around the corner and urges the player to get out of the room as
+          fast as possible.
+        </p>
+  
+        <h3>Social garden</h3>
+        <img src="./IMG/voices that bloom.jpg" alt="" width="720" height="540" />
+        <p>
+          While both audio controlled game and escape room ideas were enticing as
+          final project ideas, I just felt something was missing. This was when I
+          started scrolling IG and there I saw the announcement:<strong>
+            The Lume is closing.
+          </strong>
+  
+          Then it hit me, another idea that allows me to piece all my previous
+          ideas together with a greater purpose. <strong>Social Garden</strong>
+          <i>Now renamed to Voices that Bloom.</i> <br /><br />
+          Voices that Bloom is a chill, interactive digital space where people’s
+          voices bring the environment to life. The idea is simple: when people
+          talk, laugh, or just make noise together, flowers start to grow and fill
+          the space. The louder the group gets, the more vibrant and full the room
+          becomes. If it goes quiet, everything fades back into emptiness. It’s
+          meant to show how beautiful connection and social interaction can be —
+          especially in a group. Whether it’s a group of friends yelling just to
+          see what happens, or people naturally chatting and hanging out, the
+          space becomes a reflection of that energy. It’s also kind of playful —
+          encouraging people to be loud, expressive, and maybe even meet new
+          people.
+          <br /><br />
+          This combines audio technology with an immersive experience to evoke a
+          sense of peace and joy as people watch flowers bloom to their voices.
+        </p>
+      </div>
+    </div>
+    <script src="./weeklies.js"></script>
+  </body>
+</html>

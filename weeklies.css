@@ -1,0 +1,234 @@
+weeklies.css
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+  background-color: #bef3ff;
+  color: #2e2b1b;
+  line-height: 1.6;
+  padding: 2rem;
+  background-image: url("./IMG/pixel-grass-bg.png"); /* optional pixel background */
+  background-size: 128px 128px;
+  background-repeat: repeat;
+}
+
+
+.backBtn {
+  background-color: #c7cefa;
+  text-decoration: none;
+  padding: 0.5rem 1.25rem;
+  font-family: "Jersey 10", sans-serif;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  color: #3b2c14;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #976db2;
+  transition: background-color 0.3s, transform 0.2s;
+  display: inline-block;
+  margin-bottom: 1rem;
+  position: fixed;
+}
+
+.backBtn:hover {
+  background-color: #8d97cf;
+  transform: translateY(-2px);
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fffdf4;
+  border: 4px solid #bfa97a;
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 #9c8358;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.flexSection { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.processContainer { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:10px
+}
+/* Headings */
+h1,
+h2,
+h3 {
+  font-family: "Jersey 10", sans-serif;
+  color: #5a7139;
+
+  text-shadow: 1px 1px 0 #f8f3dc;
+}
+
+h1 {
+  font-size: 6rem;
+  text-align: center;
+  color: #42633f;
+}
+
+h2 {
+  font-size: 4rem;
+  margin-top: 2.5rem;
+  color: #3d4f2f;
+}
+
+h3 {
+  font-size: 3rem;
+  margin-top: 2rem;
+  color: #745c3a;
+}
+
+
+p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: #3e3929;
+  font-family: "Work Sans", sans-serif;
+  max-width: 70%;
+}
+
+
+pre {
+  background: #e6e3d1;
+  border: 2px dashed #a4937b;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+  color: #2e3d2f;
+  font-size: 0.95rem;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 3px solid #b8b084;
+  border-radius: 10px;
+  margin: 1.2rem 0;
+}
+
+
+.video {
+  position: relative;
+  background-color: #fff8e7; /* Softer background */
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  max-width: 720px;
+  margin: 2rem auto;
+  border-radius: 20px;
+}
+
+.vid {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+.videoBtn {
+  margin-top: 1rem;
+}
+
+.vidBtn {
+  background-color: #d6c16c;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-family: "Jersey 10", sans-serif;
+  font-size: 1rem;
+  border-radius: 10px;
+  color: #3b2c14;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #8d7535;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+
+.vidBtn:hover {
+  background-color: #bda448;
+}
+
+
+strong {
+  color: #7a6635;
+}
+
+i {
+  color: #5b5a47;
+  font-style: italic;
+}
+
+ul { 
+  max-width: 80%;
+}
+li { 
+  width: 80%;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  h3 {
+    font-size: 1.4rem;
+  }
+  body {
+    padding: 1rem;
+  }
+}
+
+
+.rotateResizeImg {
+  position: relative;
+  width: 540px;
+  height: 720px;
+  transform: rotate(270deg);
+}
+
+#arduinoLight {
+  transform: rotate(180deg);
+}
+
+#arduinoSound {
+  transform: rotate(90deg);
+}
+
+#arduinoPotato {
+  transform: rotate(0deg);
+}
+
+#arduinoPotential {
+  transform: rotate(0deg);
+}
+
+
+#bionicBar {
+  height: 500px;
+}

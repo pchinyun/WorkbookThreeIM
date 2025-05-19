@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+   
+    <div id="experience">
+      <canvas id="experience-canvas"></canvas>
+    </div>
+    <img src="./IMG/Arrow Keys Cartoon PNG.png" alt="" class="wasd">
+    <div class="modal hidden">
+      <div class="modal-wrapper">
+        <div class="modal-header">
+          <h1 class="modal-title">Project 1</h1>
+          <button class="modal-exit-button">exit</button>
+        </div>
+        <div class="modal-content">
+          <div class="modal-content-wrapper">
+            <div class="modal-project-description"></div>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="modal-project-visit-button hidden"
+            >
+              <button class="wrapper-button">View project</button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@v0.149.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.149.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
